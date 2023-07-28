@@ -21,12 +21,9 @@ form.addEventListener('submit', function(e) {
 
 doneBtn.addEventListener('click', function() {
     randomizeComparisons()
-    // comparisons = compsAndCount[0];
-    //  = compsAndCount[1];
     y = 0;
     pointsInit();
     compare();
-    // y=-1;
 });
 
 item_one.addEventListener('click', function() {
@@ -34,7 +31,8 @@ item_one.addEventListener('click', function() {
     if (y<comparisons.length) {
         pointsKeeper();
         savedChoices[item] = to_compare[0];
-        console.log()
+        console.log('savedChoices:')
+        console.log(savedChoices)
         y++;
         if (y<comparisons.length) {
             compare();
@@ -55,7 +53,6 @@ item_two.addEventListener('click', function() {
 });
 
 function randomizeComparisons() {
-    // var comparisons = [];
     length = unorganized_list.length;
     x = 0;
     while (x != length) {
@@ -95,3 +92,31 @@ function pointsKeeper() {
     }
     console.log(pointsObject);
 };
+
+function tiebreakers() {
+    var noTies = false;
+    while (!noTies) {
+        noTies = true;
+        for (i=0;i<pointsObject.length;i++) {
+            x = pointsObject[i];
+            for (j=0;j<pointsObject.length;j++) {
+                y = pointsObject[j];
+                if (x != y) {
+                    if (pointsObject[x] == pointsObject[y]) {
+                        noTies = false;
+                        var comparison = x+','+y;
+                        var mirrorComparison = y+','+x;
+                        if (savedChoices.includes(comparison)) {
+                            choice = savedChoices[comparison];
+                            pointsObject[choice] += 1;
+                        } else if (savedChoices.includes(mirrorComparison)) {
+                            choice = savedChoices[mirrorComparison];
+                            pointsObject[choice] += 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
