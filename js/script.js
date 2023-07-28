@@ -1,28 +1,61 @@
-unorganized_list = [];
+var item_one = document.getElementById('item_one');
+var item_two = document.getElementById('item_two');
+var entered_item = document.getElementById('list_items')
+var doneBtn = document.getElementById('done');
+var unorganized_list = [];
+var comparisons = [];
+var to_compare = [];
+var pointsObject = {};
+var savedChoices = {};
+var y;
+var priority;
+var numComparisons;
+var item;
 
 const form = document.querySelector('form');
 form.addEventListener('submit', function(e) {
     e.preventDefault();
-    const fd = new FormData(form);
-
-    const obj = Object.fromEntries(fd);
-    // console.log(obj.list_items);
-    unorganized_list.push(obj.list_items)
-    // console.log(unorganized_list)
-    document.getElementById('list_items').value='';
+    unorganized_list.push(entered_item.value);
+    entered_item.value='';
 });
 
-document.getElementById('submit_list').onclick = function() {
-    var compsAndCount = randomizeComparisons(unorganized_list)
-    comparisons = compsAndCount[0];
-    numComparisons = compsAndCount[1];
-    // console.log(comparisons)
-    // console.log(numComparisons)
-    compare(comparisons, unorganized_list, numComparisons)
-};
+doneBtn.addEventListener('click', function() {
+    randomizeComparisons()
+    // comparisons = compsAndCount[0];
+    //  = compsAndCount[1];
+    y = 0;
+    pointsInit();
+    compare();
+    // y=-1;
+});
 
-function randomizeComparisons(unorganized_list) {
-    var comparisons = [];
+item_one.addEventListener('click', function() {
+    priority = 1;
+    if (y<comparisons.length) {
+        pointsKeeper();
+        savedChoices[item] = to_compare[0];
+        console.log()
+        y++;
+        if (y<comparisons.length) {
+            compare();
+        }
+    } 
+});
+
+item_two.addEventListener('click', function() {
+    priority = 2;
+    if (y<comparisons.length) {
+        pointsKeeper();
+        savedChoices[item] = to_compare[1];
+        y++;
+        if (y<comparisons.length) {
+            compare();
+        }
+    } 
+});
+
+function randomizeComparisons() {
+    // var comparisons = [];
     length = unorganized_list.length;
     x = 0;
     while (x != length) {
@@ -36,29 +69,29 @@ function randomizeComparisons(unorganized_list) {
         x += 1;
     }
     comparisons = comparisons.sort((a, b) => 0.5 - Math.random());
-    var numComparisons = comparisons.length;
-    console.log("comparions:")
+    numComparisons = comparisons.length;
+    console.log("randomized comparions:")
     console.log(comparisons)
-    return [comparisons, numComparisons];
 };
 
-var item_one = document.getElementById('item_one');
-var item_two = document.getElementById('item_two');
+function compare() {
+    item = comparisons[y];
+    to_compare = item.split(',');
+    item_one.textContent = to_compare[0];
+    item_two.textContent = to_compare[1];
+};
 
-function compare(comparisons, unorganized_list, numComparisons){
-    var savedChoices = {};
-    var count = 1;
-    var pointsDict = {};
-    for (x in comparisons) {
-        item = comparisons[x];
-        var to_compare = item.split(',');
-        console.log(item);
-        console.log(to_compare);
-
-        var priority;
-        
-        item_one.addEventListener('click', function() {priority = 1});
-        item_two.addEventListener('click', function() {priority = 2});
-        console.log(priority);
+function pointsInit() {
+    for (i=0;i<unorganized_list.length;i++) {
+        pointsObject[unorganized_list[i]] = 0;
     }
+}
+
+function pointsKeeper() {
+    if (priority == 1) {
+        pointsObject[to_compare[0]] += 100;
+    } else {
+        pointsObject[to_compare[1]] += 100;
+    }
+    console.log(pointsObject);
 };
