@@ -3,6 +3,9 @@ var item_one = document.getElementById('item_one');
 var item_two = document.getElementById('item_two');
 var entered_item = document.getElementById('list_items')
 var doneBtn = document.getElementById('done');
+var ETScreen = document.getElementById('enter_items_screen');
+var UCScreen = document.getElementById('user_choice_screen');
+var VLScreen = document.getElementById('view_list_screen');
 var unorganized_list = [];
 var sorted_list = [];
 var comparisons = [];
@@ -17,6 +20,7 @@ var item;
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     unorganized_list.push(entered_item.value);
+    $('#unsorted_list').append('<li>' + entered_item.value + '</li>');
     entered_item.value='';
 });
 
@@ -25,6 +29,7 @@ doneBtn.addEventListener('click', function() {
     y = 0;
     pointsInit();
     compare();
+    showUserChoiceScreen();
 });
 
 item_one.addEventListener('click', function() {
@@ -87,6 +92,10 @@ function pointsInit() {
     }
 }
 
+function init() {
+    showEnterItemsScreen();
+}
+
 function pointsKeeper() {
     if (priority == 1) {
         pointsObject[to_compare[0]] += 100;
@@ -129,9 +138,30 @@ function list_sorter() {
     for (i=0;i<sortedArray.length;i++) {
         var item = sortedArray[i];
         sorted_list.push(item[0]);
-        
     }
     sorted_list.reverse();
-    console.log(sorted_list);
+    for (i=0;i<sorted_list.length;i++) {
+        $('#sorted_list').append('<li>' + sorted_list[i] + '</li>');
+    }
+    showViewListScreen();
 }
 
+function showEnterItemsScreen() {
+    ETScreen.style.display = 'block';
+    UCScreen.style.display = 'none';
+    VLScreen.style.display = 'none';
+}
+
+function showUserChoiceScreen() {
+    ETScreen.style.display = 'none';
+    UCScreen.style.display = 'block';
+    VLScreen.style.display = 'none';
+}
+
+function showViewListScreen() {
+    ETScreen.style.display = 'none';
+    UCScreen.style.display = 'none';
+    VLScreen.style.display = 'block';
+}
+
+init();
