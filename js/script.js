@@ -32,11 +32,11 @@ item_one.addEventListener('click', function() {
     if (y<comparisons.length) {
         pointsKeeper();
         savedChoices[item] = to_compare[0];
-        console.log('savedChoices:')
-        console.log(savedChoices)
         y++;
         if (y<comparisons.length) {
             compare();
+        } else {
+            tiebreakers();
         }
     }
 });
@@ -49,6 +49,8 @@ item_two.addEventListener('click', function() {
         y++;
         if (y<comparisons.length) {
             compare();
+        } else {
+            tiebreakers();
         }
     }
 });
@@ -68,8 +70,8 @@ function randomizeComparisons() {
     }
     comparisons = comparisons.sort((a, b) => 0.5 - Math.random());
     numComparisons = comparisons.length;
-    console.log("randomized comparions:")
-    console.log(comparisons)
+    // console.log("randomized comparions:")
+    // console.log(comparisons)
 };
 
 function compare() {
@@ -91,7 +93,7 @@ function pointsKeeper() {
     } else {
         pointsObject[to_compare[1]] += 100;
     }
-    console.log(pointsObject);
+    // console.log(pointsObject);
 };
 
 function tiebreakers() {
@@ -127,6 +129,9 @@ function list_sorter() {
     for (i=0;i<sortedArray.length;i++) {
         var item = sortedArray[i];
         sorted_list.push(item[0]);
+        
     }
+    sorted_list.reverse();
+    console.log(sorted_list);
 }
 
