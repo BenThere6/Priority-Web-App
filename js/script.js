@@ -1,8 +1,10 @@
+const form = document.querySelector('form');
 var item_one = document.getElementById('item_one');
 var item_two = document.getElementById('item_two');
 var entered_item = document.getElementById('list_items')
 var doneBtn = document.getElementById('done');
 var unorganized_list = [];
+var sorted_list = [];
 var comparisons = [];
 var to_compare = [];
 var pointsObject = {};
@@ -12,7 +14,6 @@ var priority;
 var numComparisons;
 var item;
 
-const form = document.querySelector('form');
 form.addEventListener('submit', function(e) {
     e.preventDefault();
     unorganized_list.push(entered_item.value);
@@ -37,7 +38,7 @@ item_one.addEventListener('click', function() {
         if (y<comparisons.length) {
             compare();
         }
-    } 
+    }
 });
 
 item_two.addEventListener('click', function() {
@@ -49,7 +50,7 @@ item_two.addEventListener('click', function() {
         if (y<comparisons.length) {
             compare();
         }
-    } 
+    }
 });
 
 function randomizeComparisons() {
@@ -117,6 +118,15 @@ function tiebreakers() {
                 }
             }
         }
+    }
+    list_sorter();
+}
+
+function list_sorter() {
+    var sortedArray = Object.entries(pointsObject).sort((a,b) => b[1]-a[1]).reverse()
+    for (i=0;i<sortedArray.length;i++) {
+        var item = sortedArray[i];
+        sorted_list.push(item[0]);
     }
 }
 
