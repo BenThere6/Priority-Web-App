@@ -1,4 +1,6 @@
-const form = document.querySelector('form');
+var item_form = document.getElementById('item_form');
+var list_nameEL = document.getElementById('list_name');
+var save_form = document.getElementById('save_form');
 var item_one = document.getElementById('item_one');
 var item_two = document.getElementById('item_two');
 var entered_item = document.getElementById('list_items')
@@ -16,8 +18,9 @@ var y;
 var priority;
 var numComparisons;
 var item;
+var list_name;
 
-form.addEventListener('submit', function(e) {
+item_form.addEventListener('submit', function(e) {
     e.preventDefault();
     unorganized_list.push(entered_item.value);
     $('#unsorted_list').append('<li>' + entered_item.value + '</li>');
@@ -58,6 +61,13 @@ item_two.addEventListener('click', function() {
             tiebreakers();
         }
     }
+});
+
+save_form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    list_name = list_nameEL.value;
+    saveList();
+    list_nameEL.value = '';
 });
 
 function randomizeComparisons() {
@@ -162,6 +172,10 @@ function showViewListScreen() {
     ETScreen.style.display = 'none';
     UCScreen.style.display = 'none';
     VLScreen.style.display = 'block';
+}
+
+function saveList() {
+    localStorage.setItem(list_name, JSON.stringify(sorted_list));
 }
 
 init();
