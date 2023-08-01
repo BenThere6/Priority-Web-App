@@ -14,9 +14,9 @@
     <section class="screen" id="enter_items_screen">
         <div>
             <header><h1>Organize your list by priority</h1></header>
-            <form>
+            <form id="item_form">
                 <label for="list_items">Enter each list item:</label><br>
-                <input type="text" id="list_items" name="list_items"><br><br>
+                <input type="text" id="list_items" name="list_items">
                 <input type="submit" value="Submit Item">
             </form><br>
             <button id="done">Done</button>
@@ -33,7 +33,7 @@
     <section class="screen" id="view_list_screen">
         <h2>Here is your sorted list!</h2>
         <ol id="sorted_list"></ol>
-        <form>
+        <form id="save_form">
             <input type="text" id="list_name" name="list_name" placeholder="Enter List Name"><br>
             <input type="submit" value="Save List">
         </form>
