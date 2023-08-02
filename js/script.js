@@ -9,6 +9,7 @@ var mainScreen = document.getElementById('main_screen');
 var ETScreen = document.getElementById('enter_items_screen');
 var UCScreen = document.getElementById('user_choice_screen');
 var VLScreen = document.getElementById('view_list_screen');
+var PLScreen = document.getElementById('previous_lists_screen');
 var sort_newBtn = document.getElementById('sort_new');
 var view_sortedBtn = document.getElementById('view_sorted');
 var unorganized_list = [];
@@ -40,16 +41,11 @@ sort_newBtn.addEventListener('click', function() {
     sorted_list = [];
     document.getElementById('unsorted_list').innerHTML = '';
     document.getElementById('sorted_list').innerHTML = '';
-    // priority='';
-    // numComparisons=0;
-    // item='';
-    // list_name='';
-    
     showEnterItemsScreen();
 });
 
 view_sortedBtn.addEventListener('click', function() {
-
+    showPreviousListsScreen();
 });
 
 doneBtn.addEventListener('click', function() {
@@ -93,6 +89,7 @@ save_form.addEventListener('submit', function(e) {
     list_name = list_nameEL.value;
     saveList();
     list_nameEL.value = '';
+    save_form.style.display = 'none';
 });
 
 function randomizeComparisons() {
@@ -186,6 +183,7 @@ function showMainScreen() {
     UCScreen.style.display = 'none';
     VLScreen.style.display = 'none';
     mainScreen.style.display = 'block';
+    PLScreen.style.display = 'block';
 }
 
 function showEnterItemsScreen() {
@@ -193,6 +191,7 @@ function showEnterItemsScreen() {
     UCScreen.style.display = 'none';
     VLScreen.style.display = 'none';
     mainScreen.style.display = 'none';
+    PLScreen.style.display = 'block';
 }
 
 function showUserChoiceScreen() {
@@ -200,6 +199,7 @@ function showUserChoiceScreen() {
     UCScreen.style.display = 'block';
     VLScreen.style.display = 'none';
     mainScreen.style.display = 'none';
+    PLScreen.style.display = 'block';
 }
 
 function showViewListScreen() {
@@ -207,6 +207,16 @@ function showViewListScreen() {
     UCScreen.style.display = 'none';
     VLScreen.style.display = 'block';
     mainScreen.style.display = 'block';
+    save_form.style.display = 'block';
+    PLScreen.style.display = 'block';
+}
+
+function showPreviousListsScreen() {
+    ETScreen.style.display = 'none';
+    UCScreen.style.display = 'none';
+    VLScreen.style.display = 'none';
+    mainScreen.style.display = 'block';
+    PLScreen.style.display = 'block';
 }
 
 function saveList() {
