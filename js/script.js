@@ -5,9 +5,12 @@ var item_one = document.getElementById('item_one');
 var item_two = document.getElementById('item_two');
 var entered_item = document.getElementById('list_items')
 var doneBtn = document.getElementById('done');
+var mainScreen = document.getElementById('main_screen');
 var ETScreen = document.getElementById('enter_items_screen');
 var UCScreen = document.getElementById('user_choice_screen');
 var VLScreen = document.getElementById('view_list_screen');
+var sort_newBtn = document.getElementById('sort_new');
+var view_sortedBtn = document.getElementById('view_sorted');
 var unorganized_list = [];
 var sorted_list = [];
 var comparisons = [];
@@ -25,6 +28,28 @@ item_form.addEventListener('submit', function(e) {
     unorganized_list.push(entered_item.value);
     $('#unsorted_list').append('<li>' + entered_item.value + '</li>');
     entered_item.value='';
+});
+
+sort_newBtn.addEventListener('click', function() {
+    unorganized_list = [];
+    sorted_list = [];
+    comparisons = [];
+    to_compare = [];
+    pointsObject = {};
+    savedChoices = {};
+    sorted_list = [];
+    document.getElementById('unsorted_list').innerHTML = '';
+    document.getElementById('sorted_list').innerHTML = '';
+    // priority='';
+    // numComparisons=0;
+    // item='';
+    // list_name='';
+    
+    showEnterItemsScreen();
+});
+
+view_sortedBtn.addEventListener('click', function() {
+
 });
 
 doneBtn.addEventListener('click', function() {
@@ -103,7 +128,7 @@ function pointsInit() {
 }
 
 function init() {
-    showEnterItemsScreen();
+    showMainScreen();
 }
 
 function pointsKeeper() {
@@ -156,22 +181,32 @@ function list_sorter() {
     showViewListScreen();
 }
 
+function showMainScreen() {
+    ETScreen.style.display = 'none';
+    UCScreen.style.display = 'none';
+    VLScreen.style.display = 'none';
+    mainScreen.style.display = 'block';
+}
+
 function showEnterItemsScreen() {
     ETScreen.style.display = 'block';
     UCScreen.style.display = 'none';
     VLScreen.style.display = 'none';
+    mainScreen.style.display = 'none';
 }
 
 function showUserChoiceScreen() {
     ETScreen.style.display = 'none';
     UCScreen.style.display = 'block';
     VLScreen.style.display = 'none';
+    mainScreen.style.display = 'none';
 }
 
 function showViewListScreen() {
     ETScreen.style.display = 'none';
     UCScreen.style.display = 'none';
     VLScreen.style.display = 'block';
+    mainScreen.style.display = 'block';
 }
 
 function saveList() {
