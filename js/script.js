@@ -12,6 +12,7 @@ var VLScreen = document.getElementById('view_list_screen');
 var PLScreen = document.getElementById('previous_lists_screen');
 var sort_newBtn = document.getElementById('sort_new');
 var view_sortedBtn = document.getElementById('view_sorted');
+var list_box_container = document.getElementById('list_box_container');
 var unorganized_list = [];
 var sorted_list = [];
 var comparisons = [];
@@ -107,8 +108,6 @@ function randomizeComparisons() {
     }
     comparisons = comparisons.sort((a, b) => 0.5 - Math.random());
     numComparisons = comparisons.length;
-    // console.log("randomized comparions:")
-    // console.log(comparisons)
 };
 
 function compare() {
@@ -134,7 +133,6 @@ function pointsKeeper() {
     } else {
         pointsObject[to_compare[1]] += 100;
     }
-    // console.log(pointsObject);
 };
 
 function tiebreakers() {
@@ -212,6 +210,7 @@ function showViewListScreen() {
 }
 
 function showPreviousListsScreen() {
+
     ETScreen.style.display = 'none';
     UCScreen.style.display = 'none';
     VLScreen.style.display = 'none';
@@ -219,8 +218,21 @@ function showPreviousListsScreen() {
     PLScreen.style.display = 'block';
 }
 
-function saveList() {
-    localStorage.setItem(list_name, JSON.stringify(sorted_list));
+function createFinalElements() {
+    list_box_container.innerHTML = '';
+    var prioritized_lists = JSON.parse(localStorage.getItem('prioritized_lists'));
+
+    var div = document.createElement('div');
+    // div.id = 
 }
 
-init();
+function saveList() {
+    var prioritized_lists = {};
+    const objectExists = (localStorage.getItem('prioritized_lists') !== null);
+    if (objectExists) {
+        prioritized_lists = JSON.parse(localStorage.getItem('prioritized_lists'));
+    } 
+    prioritized_lists[list_name] = sorted_list;
+    localStorage.setItem('prioritized_lists', JSON.stringify(prioritized_lists));
+}
+
