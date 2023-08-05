@@ -46,6 +46,7 @@ sort_newBtn.addEventListener('click', function() {
 });
 
 view_sortedBtn.addEventListener('click', function() {
+    createFinalElements();
     showPreviousListsScreen();
 });
 
@@ -181,7 +182,7 @@ function showMainScreen() {
     UCScreen.style.display = 'none';
     VLScreen.style.display = 'none';
     mainScreen.style.display = 'block';
-    PLScreen.style.display = 'block';
+    PLScreen.style.display = 'none';
 }
 
 function showEnterItemsScreen() {
@@ -189,7 +190,7 @@ function showEnterItemsScreen() {
     UCScreen.style.display = 'none';
     VLScreen.style.display = 'none';
     mainScreen.style.display = 'none';
-    PLScreen.style.display = 'block';
+    PLScreen.style.display = 'none';
 }
 
 function showUserChoiceScreen() {
@@ -197,7 +198,7 @@ function showUserChoiceScreen() {
     UCScreen.style.display = 'block';
     VLScreen.style.display = 'none';
     mainScreen.style.display = 'none';
-    PLScreen.style.display = 'block';
+    PLScreen.style.display = 'none';
 }
 
 function showViewListScreen() {
@@ -206,11 +207,10 @@ function showViewListScreen() {
     VLScreen.style.display = 'block';
     mainScreen.style.display = 'block';
     save_form.style.display = 'block';
-    PLScreen.style.display = 'block';
+    PLScreen.style.display = 'none';
 }
 
 function showPreviousListsScreen() {
-
     ETScreen.style.display = 'none';
     UCScreen.style.display = 'none';
     VLScreen.style.display = 'none';
@@ -222,8 +222,32 @@ function createFinalElements() {
     list_box_container.innerHTML = '';
     var prioritized_lists = JSON.parse(localStorage.getItem('prioritized_lists'));
 
-    var div = document.createElement('div');
-    // div.id = 
+    for (var listName in prioritized_lists) {
+        if (prioritized_lists.hasOwnProperty(listName)) {
+            var list = prioritized_lists[listName];
+
+            var div = document.createElement('div');
+            div.classList.add('list_box');
+            var listNameEl = document.createElement('h3');
+            var listElement = document.createElement('ol'); // Create a <ol> element for the list
+            listElement.classList.add('lists');
+
+            listNameEl.textContent = listName;
+            listNameEl.style.textAlign = 'center';
+
+            for (var i = 0; i < list.length; i++) {
+                var listItem = document.createElement('li'); // Create a <li> element for each item
+                listItem.classList.add('list_items')
+                listItem.textContent = list[i];
+                listElement.appendChild(listItem); // Append each <li> to the <ul>
+            }
+            
+            div.appendChild(listNameEl);
+            div.appendChild(listElement); // Append the <ul> to the <div>
+            
+            list_box_container.appendChild(div);
+        }
+    }
 }
 
 function saveList() {
@@ -236,3 +260,4 @@ function saveList() {
     localStorage.setItem('prioritized_lists', JSON.stringify(prioritized_lists));
 }
 
+init();
