@@ -1,0 +1,30 @@
+:root {
+    --list_box_height: 225px;
+}
+
+#list_box_container {
+    margin-top: 10px;
+}
+
+.list_box {
+    display: inline-block; /* Display as inline blocks to place them next to each other */
+    width: calc(50% - 10px); /* Set the width of each box to 50% minus some spacing */
+    margin-right: 10px; /* Add some margin between the boxes */
+    margin-bottom: 10px; /* Add some margin at the bottom of each box */
+    vertical-align: top; /* Align boxes at the top */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+    border: 1px solid #000000; /* Add a border for each box */
+    padding: 10px; /* Add some padding inside each box */
+    background-color: #c68c8c; /* Set a background color for each box */
+    height: var(--list_box_height);
+}
+
+/* Clear the margin-right for the last box in each row */
+.list_box:nth-child(2n) {
+    margin-right: 0;
+}
+
+.lists {
+    max-height: calc(var(--list_box_height) - 80px);
+    overflow-y: auto;
+}
