@@ -30,6 +30,7 @@ item_form.addEventListener('submit', function(e) {
     unorganized_list.push(entered_item.value);
     $('#unsorted_list').append('<li>' + entered_item.value + '</li>');
     entered_item.value='';
+    entered_item.focus();
 });
 
 sort_newBtn.addEventListener('click', function() {
