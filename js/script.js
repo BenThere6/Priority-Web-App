@@ -13,6 +13,8 @@ var PLScreen = document.getElementById('previous_lists_screen');
 var sort_newBtn = document.getElementById('sort_new');
 var view_sortedBtn = document.getElementById('view_sorted');
 var list_box_container = document.getElementById('list_box_container');
+var errorMessage1 = document.getElementById('error_message_1');
+var errorMessage2 = document.getElementById('error_message_2');
 var unorganized_list = [];
 var sorted_list = [];
 var comparisons = [];
@@ -27,13 +29,27 @@ var list_name;
 
 item_form.addEventListener('submit', function(e) {
     e.preventDefault();
-    unorganized_list.push(entered_item.value);
-    $('#unsorted_list').append('<li>' + entered_item.value + '</li>');
-    entered_item.value='';
-    entered_item.focus();
+    var user_input = entered_item.value.trim();
+    if (unorganized_list.includes(user_input)) {
+        errorMessage1.textContent = 'Item is already in the list.';
+        entered_item.value='';
+    }
+    else if (user_input === '') {
+        errorMessage1.textContent = 'Please enter an item.';
+        entered_item.value='';
+    }
+    else {
+        errorMessage1.textContent = '';
+        unorganized_list.push(user_input);
+        $('#unsorted_list').append('<li>' + user_input + '</li>');
+        entered_item.value='';
+        entered_item.focus();
+    }
 });
 
 sort_newBtn.addEventListener('click', function() {
+    errorMessage1.textContent = '';
+    errorMessage2.textContent = '';
     unorganized_list = [];
     sorted_list = [];
     comparisons = [];
@@ -47,16 +63,24 @@ sort_newBtn.addEventListener('click', function() {
 });
 
 view_sortedBtn.addEventListener('click', function() {
+    errorMessage1.textContent = '';
+    errorMessage2.textContent = '';
     createFinalElements();
     showPreviousListsScreen();
 });
 
 doneBtn.addEventListener('click', function() {
-    randomizeComparisons()
-    y = 0;
-    pointsInit();
-    compare();
-    showUserChoiceScreen();
+    if (unorganized_list.length === 0 || unorganized_list.length === 1){
+        errorMessage1.textContent = 'List needs at least two items'
+    } else if (unorganized_list.length > 1){
+        errorMessage1.textContent = '';
+        randomizeComparisons()
+        y = 0;
+        pointsInit();
+        compare();
+        showUserChoiceScreen();
+    }
+    
 });
 
 item_one.addEventListener('click', function() {
@@ -89,10 +113,21 @@ item_two.addEventListener('click', function() {
 
 save_form.addEventListener('submit', function(e) {
     e.preventDefault();
-    list_name = list_nameEL.value;
-    saveList();
-    list_nameEL.value = '';
-    save_form.style.display = 'none';
+    list_name = list_nameEL.value.trim();
+
+    var existingData = JSON.parse(localStorage.getItem('prioritized_lists')) || {};
+
+    if (existingData.hasOwnProperty(list_name)) {
+        errorMessage2.textContent = 'List name already exists in local storage.';
+        list_nameEL.value = '';
+    } else {
+        errorMessage2.textContent = '';
+        saveList();
+        list_nameEL.value = '';
+        save_form.style.display = 'none';
+    }
+
+    
 });
 
 function randomizeComparisons() {
@@ -192,6 +227,7 @@ function showEnterItemsScreen() {
     VLScreen.style.display = 'none';
     mainScreen.style.display = 'none';
     PLScreen.style.display = 'none';
+    entered_item.focus();
 }
 
 function showUserChoiceScreen() {
@@ -229,27 +265,57 @@ function createFinalElements() {
 
             var div = document.createElement('div');
             div.classList.add('list_box');
+
+            var deleteButton = createDeleteButton(listName);
+            div.appendChild(deleteButton);
+
             var listNameEl = document.createElement('h3');
-            var listElement = document.createElement('ol'); // Create a <ol> element for the list
-            listElement.classList.add('lists');
+            var listElement = createListElement(list);
 
             listNameEl.textContent = listName;
             listNameEl.style.textAlign = 'center';
 
-            for (var i = 0; i < list.length; i++) {
-                var listItem = document.createElement('li'); // Create a <li> element for each item
-                listItem.classList.add('list_items')
-                listItem.textContent = list[i];
-                listElement.appendChild(listItem); // Append each <li> to the <ul>
-            }
-            
             div.appendChild(listNameEl);
-            div.appendChild(listElement); // Append the <ul> to the <div>
-            
+            div.appendChild(listElement);
+
             list_box_container.appendChild(div);
         }
     }
 }
+
+function createDeleteButton(listName) {
+    var deleteButton = document.createElement('button');
+    deleteButton.textContent = 'X';
+    deleteButton.classList.add('delete_button');
+
+    deleteButton.addEventListener('click', function() {
+        deleteList(listName);
+        list_box_container.removeChild(deleteButton.parentElement);
+    });
+
+    return deleteButton;
+}
+
+function createListElement(list) {
+    var listElement = document.createElement('ol');
+    listElement.classList.add('lists');
+
+    for (var i = 0; i < list.length; i++) {
+        var listItem = document.createElement('li');
+        listItem.classList.add('list_items')
+        listItem.textContent = list[i];
+        listElement.appendChild(listItem);
+    }
+
+    return listElement;
+}
+
+function deleteList(listName) {
+    var prioritized_lists = JSON.parse(localStorage.getItem('prioritized_lists'));
+    delete prioritized_lists[listName];
+    localStorage.setItem('prioritized_lists', JSON.stringify(prioritized_lists));
+}
+
 
 function saveList() {
     var prioritized_lists = {};

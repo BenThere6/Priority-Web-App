@@ -28,3 +28,19 @@
     max-height: calc(var(--list_box_height) - 80px);
     overflow-y: auto;
 }
+
+.delete_button {
+    background-color: #ff0000; /* Red background color */
+    color: #ffffff; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 50%; /* Make the button circular */
+    font-size: 16px; /* Font size */
+    padding: 6px 10px; /* Padding around the button text */
+    cursor: pointer; /* Show pointer cursor on hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
+  }
+  
+  .delete_button:hover {
+    background-color: #ff3333; /* Darker red background on hover */
+  }
+  
