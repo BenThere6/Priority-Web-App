@@ -11,11 +11,11 @@
     <section class="screen" id="main_screen">
         <header>
             <h1>Organize your list by priority</h1>
+            <div class="init-buttons-container">
+                <button class="buttons" id="sort_new">Sort New List</button>
+                <button class="buttons" id="view_sorted">View Sorted Lists</button>
+            </div>
         </header>
-        <div class="init-buttons-container">
-            <button class="buttons" id="sort_new">Sort New List</button>
-            <button class="buttons" id="view_sorted">View Sorted Lists</button>
-        </div>
     </section>
     <section class="screen" id="enter_items_screen">
         <div>
@@ -25,7 +25,7 @@
                 <input type="submit" class="buttons" value="Submit Item">
                 <div id="error_message_1" class="error-message"></div>
             </form>
-            <button id="done" class="buttons">Done</button>
+            <button id="done" class="buttons">Sort</button>
         </div>
         <div>
             <ul id="unsorted_list"></ul>
