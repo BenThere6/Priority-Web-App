@@ -44,9 +44,16 @@ header {
     background-color: var(--stark-white);
     margin:var(--st-margin);
     padding: var(--st-padding);
+    padding-right:40px;
     padding-bottom: 20px;
     position:relative;
     min-width:200px;
+}
+
+h3 {
+    background-color: rgb(216, 190, 160);
+    padding:3px 10px 3px 10px;
+    /* padding-right:10px; */
 }
 
 ol {
