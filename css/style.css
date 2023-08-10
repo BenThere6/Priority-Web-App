@@ -4,7 +4,7 @@
     --reef: rgb(202,255,187);
     --stark-white: rgb(235,219,201);
     --st-padding: 10px;
-    --st-margin: 20px;
+    --st-margin: 15px;
 }
 
 html, h1, h2, h3, body {
@@ -13,23 +13,31 @@ html, h1, h2, h3, body {
     margin:0;
 }
 
-ol {
-    margin:0;
-}
-
 body {
     background-color: var(--link-water);
+    padding-top: calc(var(--st-padding) + 2px);
 }
 
 header {
     background-color: var(--cerulean);
     padding: var(--st-padding);
+    padding-right: calc(var(--st-padding) + var(--st-padding));
     display:flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     border-top: black 2px solid;
     border-bottom: black 2px solid;
     flex-wrap: wrap;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100vw;
+}
+
+#list_box_container {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .list_box {
@@ -38,6 +46,12 @@ header {
     padding: var(--st-padding);
     padding-bottom: 20px;
     position:relative;
+    min-width:200px;
+}
+
+ol {
+    margin: 0;
+    overflow-x:scroll;
 }
 
 .delete_button {
@@ -47,16 +61,17 @@ header {
 }
 
 @media screen and (max-width: 768px) {
-    
+
 }
 
-@media screen and (max-width: 586px) {
+@media screen and (max-width: 654px) {
     /* Apply centering only when the second item wraps beneath */
     header {
         justify-content: center;
     }
     h1 {
-        margin: var(--st-margin);
+        /* margin: var(--st-margin); */
+        text-align: center;
     }
 }
 
