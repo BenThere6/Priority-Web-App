@@ -161,7 +161,8 @@ function pointsInit() {
 }
 
 function init() {
-    showMainScreen();
+    createFinalElements();
+    showPreviousListsScreen();
 }
 
 function pointsKeeper() {
@@ -213,10 +214,10 @@ function list_sorter() {
     showViewListScreen();
 }
 
-function showMainScreen() {
-    hideAllScreens(); // Hide all screens first
-    mainScreen.style.display = 'block';
-}
+// function showMainScreen() {
+//     hideAllScreens();
+//     mainScreen.style.display = 'block';
+// }
 
 function showEnterItemsScreen() {
     hideAllScreens();
