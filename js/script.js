@@ -321,4 +321,18 @@ function saveList() {
     localStorage.setItem('prioritized_lists', JSON.stringify(prioritized_lists));
 }
 
+function adjustPadding() {
+    const header = document.getElementById('main-header');
+    const content = document.getElementById('content');
+    const headerHeight = header.offsetHeight;
+
+    // Add header height to content padding-top
+    content.style.paddingTop = headerHeight + 'px';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    adjustPadding();
+    window.addEventListener('resize', adjustPadding);
+});
+
 init();
