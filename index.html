@@ -8,55 +8,55 @@
     <title>Priority</title>
 </head>
 <body>
-    <section class="screen" id="main_screen">
-        <header>
-            <h1>Organize your list by priority</h1>
-            <div class="init-buttons-container">
-                <button class="buttons" id="sort_new">Sort New List</button>
-                <button class="buttons" id="view_sorted">View Sorted Lists</button>
+    <header id="main-header">
+        <h1>Organize your list by priority</h1>
+        <div class="init-buttons-container">
+            <button class="buttons" id="sort_new">Sort New List</button>
+            <button class="buttons" id="view_sorted">View Sorted Lists</button>
+        </div>
+    </header>
+    <section id="content">
+        <section class="screen" id="enter_items_screen">
+            <div>
+                <form id="item_form">
+                    <label for="list_items">Enter each list item:</label><br>
+                    <input type="text" id="list_items" name="list_items" required autocomplete="off">
+                    <input type="submit" class="buttons" value="Submit Item">
+                    <div id="error_message_1" class="error-message"></div>
+                </form>
+                <button id="done" class="buttons">Sort</button>
             </div>
-        </header>
-    </section>
-    <section class="screen" id="enter_items_screen">
-        <div>
-            <form id="item_form">
-                <label for="list_items">Enter each list item:</label><br>
-                <input type="text" id="list_items" name="list_items" required autocomplete="off">
-                <input type="submit" class="buttons" value="Submit Item">
-                <div id="error_message_1" class="error-message"></div>
+            <div>
+                <ul id="unsorted_list"></ul>
+            </div>
+        </section>
+        <section class="screen" id="user_choice_screen">
+            <h2 class="priority-header">Which item is a higher priority?</h2>
+            <button id="item_one" class="buttons"></button>
+            <button id="item_two" class="buttons"></button>
+        </section>
+        <section class="screen" id="view_list_screen">
+            <h2 class="priority-header">Here is your sorted list!</h2>
+            <ol id="sorted_list"></ol>
+            <form id="save_form">
+                <input type="text" id="list_name" name="list_name" placeholder="Enter List Name" required autocomplete="off"><br>
+                <input type="submit" class="buttons" value="Save List">
+                <div id="error_message_2" class="error-message"></div>
             </form>
-            <button id="done" class="buttons">Sort</button>
-        </div>
-        <div>
-            <ul id="unsorted_list"></ul>
-        </div>
-    </section>
-    <section class="screen" id="user_choice_screen">
-        <h2 class="priority-header">Which item is a higher priority?</h2>
-        <button id="item_one" class="buttons"></button>
-        <button id="item_two" class="buttons"></button>
-    </section>
-    <section class="screen" id="view_list_screen">
-        <h2 class="priority-header">Here is your sorted list!</h2>
-        <ol id="sorted_list"></ol>
-        <form id="save_form">
-            <input type="text" id="list_name" name="list_name" placeholder="Enter List Name" required autocomplete="off"><br>
-            <input type="submit" class="buttons" value="Save List">
-            <div id="error_message_2" class="error-message"></div>
-        </form>
-    </section>
-    <section class="screen" id="previous_lists_screen">
-        <div id="list_box_container">
-            <!-- <div class="list_box">
-                <h3>List Title</h3>
-                <button class="delete_button">X</button>
-                <ol class="lists">
-                    <li>List Item 1</li class="list_items">
-                    <li>List Item 2</li class="list_items">
-                    <li>List Item 3</li class="list_items">
-                </ol>
-            </div> -->
-        </div>
+        </section>
+        <section class="screen" id="previous_lists_screen">
+            <div id="list_box_container">
+                <!-- <div class="list_box">
+                    <h3>List Title</h3>
+                    <button class="delete_button">X</button>
+                    <ol class="lists">
+                        <li>List Item 1</li class="list_items">
+                        <li>List Item 2</li class="list_items">
+                        <li>List Item 3</li class="list_items">
+                    </ol>
+                </div> -->
+            </div>
+        </section>
     </section>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./js/script.js"></script>
