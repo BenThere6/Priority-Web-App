@@ -48,12 +48,13 @@ header {
     padding-bottom: 20px;
     position:relative;
     min-width:200px;
+    border-radius: 20px;
 }
 
 h3 {
-    background-color: rgb(216, 190, 160);
+    background-color: rgb(224, 201, 174);
     padding:3px 10px 3px 10px;
-    /* padding-right:10px; */
+    border-radius: 15px 5px 5px 5px;
 }
 
 ol {
