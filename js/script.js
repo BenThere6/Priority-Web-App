@@ -241,7 +241,6 @@ function showPreviousListsScreen() {
 }
 
 function hideAllScreens() {
-    mainScreen.style.display = 'none';
     ETScreen.style.display = 'none';
     UCScreen.style.display = 'none';
     VLScreen.style.display = 'none';

@@ -1,0 +1,181 @@
+:root {
+    --color-primary: rgb(37, 87, 110);
+    --color-secondary: rgb(168, 203, 179);
+    --color-tertiary: rgb(239, 225, 204);
+    --color-quaternary: rgb(252, 183, 175);
+    --list-box-height: 225px;
+    --border-radius: 6px;
+}
+
+/* General styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: var(--color-tertiary);
+}
+
+body {
+    background-color: var(--color-primary);
+}
+
+header {
+    margin: 0;
+    color: var(--color-tertiary);
+    text-align: center;
+}
+
+.init-buttons-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.buttons {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: var(--color-secondary);
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.buttons:hover {
+    background-color: var(--color-tertiary);
+}
+
+/* Adjusted styles for list_box */
+.list_box {
+    flex: 1; /* Take up available horizontal space */
+    margin: 0 10px; /* Moderate side margins */
+    margin-bottom: 10px;
+    vertical-align: top;
+    box-sizing: border-box;
+    border: 1px solid #000000;
+    border-radius: var(--border-radius);
+    padding: 10px;
+    background-color: var(--color-quaternary);
+    max-width: 300px; /* Adjust max-width as needed */
+    height: var(--list-box-height);
+    color: var(--color-primary);
+    position: relative; /* Position for X button */
+    text-align: center;
+}
+
+.list_box:nth-child(2n) {
+    margin-right: 0;
+}
+
+.lists {
+    max-height: calc(var(--list-box-height) - 80px);
+    overflow-y: auto;
+}
+
+/* Styles for form label and inputs */
+form {
+    margin-top: 10px;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+}
+
+input[type="text"], input[type="submit"] {
+    padding: 8px;
+    margin: 5px 0;
+    border: none;
+    border-radius: var(--border-radius);
+}
+
+/* X button styles */
+.delete_button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.delete_button:hover {
+    background-color: #ff3333;
+}
+
+/* Additional styles for unsorted list */
+#unsorted_list {
+    list-style-type: none; /* Remove bullets */
+    text-align: center;
+    padding: 0;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#unsorted_list li {
+    border: 1px solid var(--color-tertiary);
+    margin: 5px 0;
+    padding: 5px;
+    background-color: var(--color-quaternary);
+    color: var(--color-primary);
+}
+
+/* Center each screen */
+.screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Center header and adjust Done button */
+header h1 {
+    margin: 0;
+}
+
+#done {
+    padding: 12px 60px; /* Adjust dimensions */
+    background-color: rgb(136, 168, 136); /* Slightly darker background */
+    border: none;
+    border-radius: var(--border-radius);
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    display: block;
+    margin: 10px auto; /* Center the button */
+}
+
+#done:hover {
+    background-color: rgb(118, 146, 118); /* Darker on hover */
+}
+
+/* Adjusted styles for ordered list */
+#sorted_list {
+    text-align: left; /* Align list text to the left */
+    max-width: 800px; /* Adjust max-width as needed */
+    margin: 0 auto; /* Center the list */
+    padding-left: 20px; /* Indent the list items */
+}
+
+#main_screen, #enter_items_screen, #user_choice_screen, #view_list_screen, #previous_lists_screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto; /* Remove fixed height */
+    padding: 20px; /* Add some padding */
+}
+
+/* End of file */
