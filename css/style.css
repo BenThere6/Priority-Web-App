@@ -3,11 +3,17 @@
     --link-water: rgb(201,230,240);
     --reef: rgb(202,255,187);
     --stark-white: rgb(235,219,201);
+    --st-padding: 10px;
+    --st-margin: 20px;
 }
 
 html, h1, h2, h3, body {
     font-family: Arial, Helvetica, sans-serif;
     padding:0;
+    margin:0;
+}
+
+ol {
     margin:0;
 }
 
@@ -17,11 +23,40 @@ body {
 
 header {
     background-color: var(--cerulean);
-    padding:10px;
+    padding: var(--st-padding);
     display:flex;
     justify-content: space-between;
     align-items: center;
     border-top: black 2px solid;
     border-bottom: black 2px solid;
+    flex-wrap: wrap;
+}
+
+.list_box {
+    background-color: var(--stark-white);
+    margin:var(--st-margin);
+    padding: var(--st-padding);
+    padding-bottom: 20px;
+    position:relative;
+}
+
+.delete_button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 586px) {
+    /* Apply centering only when the second item wraps beneath */
+    header {
+        justify-content: center;
+    }
+    h1 {
+        margin: var(--st-margin);
+    }
 }
 
