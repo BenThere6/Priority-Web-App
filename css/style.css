@@ -1,0 +1,27 @@
+:root {
+    --cerulean: rgb(17,169,203);
+    --link-water: rgb(201,230,240);
+    --reef: rgb(202,255,187);
+    --stark-white: rgb(235,219,201);
+}
+
+html, h1, h2, h3, body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding:0;
+    margin:0;
+}
+
+body {
+    background-color: var(--link-water);
+}
+
+header {
+    background-color: var(--cerulean);
+    padding:10px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: black 2px solid;
+    border-bottom: black 2px solid;
+}
+
