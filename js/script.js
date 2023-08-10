@@ -214,45 +214,39 @@ function list_sorter() {
 }
 
 function showMainScreen() {
-    ETScreen.style.display = 'none';
-    UCScreen.style.display = 'none';
-    VLScreen.style.display = 'none';
+    hideAllScreens(); // Hide all screens first
     mainScreen.style.display = 'block';
-    PLScreen.style.display = 'none';
 }
 
 function showEnterItemsScreen() {
+    hideAllScreens();
     ETScreen.style.display = 'block';
-    UCScreen.style.display = 'none';
-    VLScreen.style.display = 'none';
-    mainScreen.style.display = 'none';
-    PLScreen.style.display = 'none';
     entered_item.focus();
 }
 
 function showUserChoiceScreen() {
-    ETScreen.style.display = 'none';
+    hideAllScreens();
     UCScreen.style.display = 'block';
-    VLScreen.style.display = 'none';
-    mainScreen.style.display = 'none';
-    PLScreen.style.display = 'none';
 }
 
 function showViewListScreen() {
-    ETScreen.style.display = 'none';
-    UCScreen.style.display = 'none';
+    hideAllScreens();
     VLScreen.style.display = 'block';
-    mainScreen.style.display = 'block';
     save_form.style.display = 'block';
-    PLScreen.style.display = 'none';
 }
 
 function showPreviousListsScreen() {
+    hideAllScreens();
+    PLScreen.style.display = 'block';
+}
+
+function hideAllScreens() {
+    mainScreen.style.display = 'none';
     ETScreen.style.display = 'none';
     UCScreen.style.display = 'none';
     VLScreen.style.display = 'none';
-    mainScreen.style.display = 'block';
-    PLScreen.style.display = 'block';
+    PLScreen.style.display = 'none';
+    save_form.style.display = 'none';
 }
 
 function createFinalElements() {
