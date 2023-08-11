@@ -245,10 +245,17 @@ ul li {
     background-color: rgb(158, 215, 231);
 }
 
+#save-confirm {
+    color: rgb(98, 50, 43);
+}
+
 @media screen and (max-width: 654px) {
     /* Apply centering only when the second item wraps beneath */
     header {
         justify-content: center;
+    }
+    .priority-header {
+        font-size: 21px;
     }
     h1 {
         /* margin: var(--st-margin); */

@@ -15,6 +15,7 @@ var view_sortedBtn = document.getElementById('view_sorted');
 var list_box_container = document.getElementById('list_box_container');
 var errorMessage1 = document.getElementById('error_message_1');
 var errorMessage2 = document.getElementById('error_message_2');
+var save_confirm = document.getElementById('save-confirm');
 var unorganized_list = [];
 var sorted_list = [];
 var comparisons = [];
@@ -122,6 +123,7 @@ save_form.addEventListener('submit', function(e) {
         list_nameEL.value = '';
     } else {
         errorMessage2.textContent = '';
+        save_confirm.style.display = 'block';
         saveList();
         list_nameEL.value = '';
         save_form.style.display = 'none';
@@ -232,6 +234,7 @@ function showUserChoiceScreen() {
 
 function showViewListScreen() {
     hideAllScreens();
+    save_confirm.style.display = 'none';
     VLScreen.style.display = 'block';
     save_form.style.display = 'block';
     list_nameEL.focus();
