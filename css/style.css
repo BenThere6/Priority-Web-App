@@ -210,5 +210,8 @@ ul li {
     .header-buttons {
         font-size: medium;
     }
+    label {
+        font-size: larger;
+    }
 }
 
