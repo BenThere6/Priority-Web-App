@@ -41,7 +41,7 @@ item_form.addEventListener('submit', function(e) {
     else {
         errorMessage1.textContent = '';
         unorganized_list.push(user_input);
-        $('#unsorted_list').append('<li>' + user_input + '</li>');
+        $('#unsorted_list').prepend('<li>' + user_input + '</li>');
         entered_item.value='';
         entered_item.focus();
     }
