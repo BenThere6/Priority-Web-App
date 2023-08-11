@@ -27,6 +27,9 @@ var numComparisons;
 var item;
 var list_name;
 
+var vwEl = document.getElementById('vw');
+vwEl.textContent = window.innerWidth;
+
 item_form.addEventListener('submit', function(e) {
     e.preventDefault();
     var user_input = entered_item.value.trim();
