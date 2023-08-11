@@ -11,30 +11,37 @@
     <header id="main-header">
         <h1>Organize your list by priority</h1>
         <div class="buttons-container">
-            <button class="buttons" id="sort_new">Sort New List</button>
-            <button class="buttons" id="view_sorted">View Sorted Lists</button>
+            <button class="header-buttons" id="sort_new">New List</button>
+            <button class="header-buttons" id="view_sorted">View Sorted Lists</button>
         </div>
     </header>
     <section id="content">
         <div id="vw"></div>
         <section class="screen" id="enter_items_screen">
-            <div>
-                <form id="item_form">
-                    <label for="list_items">Enter each list item:</label><br>
-                    <input type="text" id="list_items" name="list_items" required autocomplete="off">
-                    <input type="submit" class="buttons" value="Submit Item">
+            <div class="form-flexbox">
+                <div class="form-items-flex">
+                    <form id="item_form">
+                        <label for="list_items">Enter each list item:</label><br>
+                        <div class="form-input">
+                            <input type="text" id="list_items" name="list_items" required autocomplete="off">
+                            <input type="submit" class="buttons" value="Add">
+                        </div>
+                    </form>
+                    <button id="done" class="buttons">Sort</button>
                     <div id="error_message_1" class="error-message"></div>
-                </form>
-                <button id="done" class="buttons">Sort</button>
+                    <div id="separate">
+                        <ul id="unsorted_list"></ul>
+                    </div>
+                </div>
             </div>
-            <div>
-                <ul id="unsorted_list"></ul>
-            </div>
+            
         </section>
         <section class="screen" id="user_choice_screen">
-            <h2 class="priority-header">Which item is a higher priority?</h2>
-            <button id="item_one" class="buttons"></button>
-            <button id="item_two" class="buttons"></button>
+            <div class="form-flexbox">
+                <h2 class="priority-header">Which item is a higher priority?</h2>
+                <button id="item_one" class="buttons"></button>
+                <button id="item_two" class="buttons"></button>
+            </div>
         </section>
         <section class="screen" id="view_list_screen">
             <h2 class="priority-header">Here is your sorted list!</h2>
