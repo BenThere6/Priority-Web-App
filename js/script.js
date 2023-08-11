@@ -284,8 +284,11 @@ function createDeleteButton(listName) {
     deleteButton.classList.add('delete_button');
 
     deleteButton.addEventListener('click', function() {
-        deleteList(listName);
-        list_box_container.removeChild(deleteButton.parentElement);
+        var confirm = window.confirm(`Are you sure you want to delete '${listName}'?`)
+        if (confirm) {
+            deleteList(listName);
+            list_box_container.removeChild(deleteButton.parentElement);
+        }
     });
 
     return deleteButton;
