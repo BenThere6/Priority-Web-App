@@ -39,6 +39,14 @@ h1 {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+.buttons {
+    background-color: rgb(196, 193, 193);
+    color: black;
+    border-radius: 5px;
+    border: black 1px solid;
+    margin-left:10px;
+}
+
 #buttons-container {
     padding:var(--st-padding);
 }
@@ -95,6 +103,7 @@ h3 {
 }
 
 #done {
+    color:black;
     margin-top: var(--st-margin);
     margin-bottom: var(--st-margin);
     padding: 6px 35px 5px 35px;
@@ -123,6 +132,8 @@ label {
     width: 100%;
     padding-right:var(--st-padding);
     font-size: 20px;
+    height: 30px;
+    padding-left:var(--st-padding);
 }
 
 ol {
@@ -143,6 +154,7 @@ ul li {
     padding:var(--st-padding);
     background-color: var(--stark-white);
     border-radius: 6px;
+    overflow-x: scroll;
 }
 
 .delete_button {
@@ -163,6 +175,7 @@ ul li {
 .header-buttons {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-weight:bolder;
+    color: black;
     background-color: var(--dark-stark);
     border-radius: 5px;
     border: black 1px solid;
@@ -179,10 +192,6 @@ ul li {
     border: black 2px solid;
 }
 
-@media screen and (max-width: 768px) {
-
-}
-
 @media screen and (max-width: 654px) {
     /* Apply centering only when the second item wraps beneath */
     header {
@@ -197,6 +206,9 @@ ul li {
     }
     #list_box_container {
         display:block;
+    }
+    .header-buttons {
+        font-size: medium;
     }
 }
 
