@@ -27,9 +27,6 @@ var numComparisons;
 var item;
 var list_name;
 
-var vwEl = document.getElementById('vw');
-vwEl.textContent = window.innerWidth;
-
 item_form.addEventListener('submit', function(e) {
     e.preventDefault();
     var user_input = entered_item.value.trim();
@@ -267,6 +264,7 @@ function createFinalElements() {
             div.appendChild(deleteButton);
 
             var listNameEl = document.createElement('h3');
+            listNameEl.classList.add('scroll');
             var listElement = createListElement(list);
 
             listNameEl.textContent = listName;
@@ -296,6 +294,7 @@ function createDeleteButton(listName) {
 function createListElement(list) {
     var listElement = document.createElement('ol');
     listElement.classList.add('lists');
+    listElement.classList.add('scroll');
 
     for (var i = 0; i < list.length; i++) {
         var listItem = document.createElement('li');
