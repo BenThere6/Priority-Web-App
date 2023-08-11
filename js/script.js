@@ -234,6 +234,7 @@ function showViewListScreen() {
     hideAllScreens();
     VLScreen.style.display = 'block';
     save_form.style.display = 'block';
+    list_nameEL.focus();
 }
 
 function showPreviousListsScreen() {

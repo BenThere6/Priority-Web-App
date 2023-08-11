@@ -110,7 +110,7 @@ h3 {
     align-items: center;
 }
 
-#item_form {
+.item_form {
     width:60vw;
     text-align: center;
 }
@@ -143,7 +143,7 @@ h3 {
     border-top: rgb(119, 118, 118) 2px solid;
 }
 
-label {
+label, .priority-header {
     font-weight: bold;
     font-size: 30px;
 }
@@ -155,6 +155,22 @@ label {
     border-radius: 4px;
     background-color: rgb(158, 215, 231);
     /* justify-content: space-between; */
+}
+
+#sorted-container {
+    /* background-color: blue; */
+    margin-top: 15vh;
+}
+
+#sorted_list {
+    background-color: var(--stark-white);
+    border:black 1px solid;
+    border-radius: 15px;
+    padding:var(--st-padding);
+    padding-left:40px;
+    margin-top:var(--st-margin);
+    margin-bottom: var(--st-margin);
+    width: 290px;
 }
 
 #list_items {
@@ -219,6 +235,14 @@ ul li {
 
 .header-buttons:active {
     border: black 2px solid;
+}
+
+#save_form {
+    padding:var(--st-padding);
+    margin:var(--st-margin);
+    border:black 1px solid;
+    border-radius: 4px;
+    background-color: rgb(158, 215, 231);
 }
 
 @media screen and (max-width: 654px) {
