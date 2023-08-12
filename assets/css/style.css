@@ -114,6 +114,10 @@ h3 {
     /* position: relative; */
 }
 
+.scroll::-webkit-scrollbar {
+    display:none;
+}
+
 .form-flexbox {
     display:flex;
     padding-top:15vh;
