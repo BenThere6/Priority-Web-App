@@ -87,7 +87,7 @@ h1 {
     padding-right:40px;
     padding-bottom: 20px;
     position:relative;
-    min-width:200px;
+    min-width:400px;
     border-radius: 20px;
 }
 
@@ -323,5 +323,8 @@ ul li {
     }
     .header-buttons:hover {
         background-color: var(--dark-stark);
+    }
+    .list_box {
+        min-width: 280px;
     }
 }
