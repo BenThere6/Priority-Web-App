@@ -347,10 +347,13 @@ function adjustPadding() {
 
 function adjustX() {
     const list_title = document.querySelector('.list_title');
-    const delete_button = document.querySelector('.delete_button');
+    const delete_buttons = document.querySelectorAll('.delete_button');
     const welcome_page = document.getElementById('welcome-page');
     try {
-        delete_button.style.height = list_title.clientHeight + 'px';
+        const listTitleHeight = list_title.clientHeight + 'px';
+        delete_buttons.forEach(button => {
+            button.style.height = listTitleHeight;
+        });
         welcome_page.style.display = 'none';
     }
     catch {
