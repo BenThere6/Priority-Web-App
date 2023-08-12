@@ -291,5 +291,8 @@ ul li {
     #save_form {
         width:80vw;
     }
+    .item_form {
+        width:90vw;
+    }
 }
 
