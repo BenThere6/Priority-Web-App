@@ -243,10 +243,25 @@ ul li {
     border:black 1px solid;
     border-radius: 4px;
     background-color: rgb(158, 215, 231);
+    
 }
 
 #save-confirm {
     color: rgb(98, 50, 43);
+}
+
+#save-flex {
+    display:flex;
+    
+    /* justify-content: space-between; */
+    /* max-width:80vw; */
+}
+
+#list_name {
+    width:68%;
+    width:50vw;
+    font-size: 20px;
+    padding:4px 0 4px 10px;
 }
 
 @media screen and (max-width: 654px) {
@@ -272,6 +287,9 @@ ul li {
     }
     label {
         font-size: larger;
+    }
+    #save_form {
+        width:80vw;
     }
 }
 
