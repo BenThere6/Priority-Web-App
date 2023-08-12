@@ -42,11 +42,19 @@ item_form.addEventListener('submit', function(e) {
         entered_item.value='';
     }
     else {
-        // errorMessage1.textContent = '';
         errorMessage1.style.display = 'none';
         unorganized_list.push(user_input);
-        $('#unsorted_list').prepend('<li>' + user_input + '</li>');
-        entered_item.value='';
+
+        // Create a new list item element with the added class
+        var listItem = document.createElement('li');
+        listItem.textContent = user_input;
+        listItem.classList.add('scroll'); // Add your custom class here
+
+        // Prepend the new list item to the unsorted list
+        var unsortedList = document.getElementById('unsorted_list');
+        unsortedList.insertBefore(listItem, unsortedList.firstChild);
+
+        entered_item.value = '';
         entered_item.focus();
     }
 });
@@ -314,10 +322,10 @@ function createListElement(list) {
     for (var i = 0; i < list.length; i++) {
         var listItem = document.createElement('li');
         listItem.classList.add('list_items');
+        // listItem.classList.add('scroll');
         listItem.textContent = list[i];
         listElement.appendChild(listItem);
     }
-
     return listElement;
 }
 
@@ -365,8 +373,28 @@ function adjustX() {
 
 document.addEventListener('DOMContentLoaded', () => {
     adjustPadding();
-    // adjustX();
-    window.addEventListener('resize', adjustPadding);
+    adjustScrollbarVisibility();
+    window.addEventListener('resize', () => {
+        adjustPadding();
+        adjustScrollbarVisibility();
+    });
 });
+
+function adjustScrollbarVisibility() {
+    const scrollContainers = document.querySelectorAll('.scroll');
+
+    scrollContainers.forEach(container => {
+        const hasOverflow = container.scrollWidth > container.clientWidth;
+
+        if (hasOverflow) {
+            container.classList.add('show-scrollbar');
+        } else {
+            container.classList.remove('show-scrollbar');
+        }
+    });
+}
+
+window.addEventListener('resize', adjustScrollbarVisibility);
+
 
 init();

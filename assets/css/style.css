@@ -23,14 +23,7 @@ html, h1, h2, h3, body, label {
 }
 
 body {
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE and Edge */
     background-color: var(--link-water);
-}
-
-/* For Firefox, you can customize the scrollbar color as well */
-body::-webkit-scrollbar {
-    display: none; /* Hide in WebKit-based browsers */
 }
 
 header {
@@ -98,9 +91,9 @@ h1 {
     border-radius: 20px;
 }
 
-.list_title {
-    height: 20px;
-}
+/* .list_title {
+    height: 30px;
+} */
 
 h3 {
     background-color: var(--dark-stark);
@@ -111,11 +104,43 @@ h3 {
 
 .scroll {
     overflow-x: scroll;
-    /* position: relative; */
 }
 
 .scroll::-webkit-scrollbar {
+    background-color: transparent;
+    width: 0;
+    height: 8px;
     display:none;
+}
+
+.scroll::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background-color: var(--darkest-stark);
+    border-radius: 16px;
+    border: 0;
+}
+
+.scroll::-webkit-scrollbar-button {
+    display: none;
+}
+
+.show-scrollbar::-webkit-scrollbar {
+    width: 8px; /* Set your preferred width here */
+    display: block;
+}
+
+.show-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--darkest-stark);
+    border-radius: 16px;
+    border: 0;
+}
+
+ol {
+    list-style-type: decimal;
+    z-index: 1;
 }
 
 .form-flexbox {
@@ -162,12 +187,14 @@ h3 {
     color:black;
     margin-top: var(--st-margin);
     /* margin-bottom: var(--st-margin); */
-    padding: 6px 35px 5px 35px;
+    padding: 6px 18px 5px 18px;
     font-size: 27px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: rgb(213, 191, 165);
+    /* background-color: rgb(213, 191, 165); */
+    background-color: var(--dark-stark);
     border: 1px black solid;
     border-radius: 5px;
+    max-width:90vw;
 }
 
 #separate {
@@ -206,6 +233,7 @@ label, .priority-header {
 }
 
 #list_items {
+    overflow-x:inherit;
     width: 100%;
     padding-right:var(--st-padding);
     font-size: 20px;
@@ -231,7 +259,7 @@ ul li {
     padding:var(--st-padding);
     background-color: var(--stark-white);
     border-radius: 6px;
-    overflow-x: scroll;
+    /* overflow-x: scroll; */
 }
 
 .delete_button {
