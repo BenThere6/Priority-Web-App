@@ -296,3 +296,11 @@ ul li {
     }
 }
 
+@media screen and (max-width: 768px) {
+    .delete_button:hover {
+        background-color: var(--stark-white);
+    }
+    .header-buttons:hover {
+        background-color: var(--stark-white);
+    }
+}
