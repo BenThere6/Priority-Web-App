@@ -104,7 +104,7 @@ h3 {
 
 .scroll {
     overflow-x: scroll;
-    position: relative;
+    /* position: relative; */
 }
 
 .form-flexbox {
@@ -188,6 +188,7 @@ label, .priority-header {
     border-radius: 15px;
     padding:var(--st-padding);
     padding-left:40px;
+    padding-right:40px;
     margin-top:var(--st-margin);
     margin-bottom: var(--st-margin);
     width: 290px;

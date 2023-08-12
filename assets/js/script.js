@@ -276,6 +276,7 @@ function createFinalElements() {
 
             var listNameEl = document.createElement('h3');
             listNameEl.classList.add('list_title');
+            listNameEl.classList.add('scroll');
             var listElement = createListElement(list);
 
             listNameEl.textContent = listName;
@@ -308,10 +309,11 @@ function createDeleteButton(listName) {
 function createListElement(list) {
     var listElement = document.createElement('ol');
     listElement.classList.add('lists');
+    listElement.classList.add('scroll');
 
     for (var i = 0; i < list.length; i++) {
         var listItem = document.createElement('li');
-        listItem.classList.add('list_items')
+        listItem.classList.add('list_items');
         listItem.textContent = list[i];
         listElement.appendChild(listItem);
     }
