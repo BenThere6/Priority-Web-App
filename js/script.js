@@ -351,6 +351,7 @@ function adjustX() {
 
 document.addEventListener('DOMContentLoaded', () => {
     adjustPadding();
+    adjustX();
     window.addEventListener('resize', adjustPadding);
 });
 
