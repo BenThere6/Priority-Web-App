@@ -342,8 +342,8 @@ function adjustPadding() {
 }
 
 function adjustX() {
-    const list_title = document.querySelector('list-title');
-    const delete_button = document.querySelector('delete_button');
+    const list_title = document.querySelector('.list_title');
+    const delete_button = document.querySelector('.delete_button');
     const xHeight = list_title.offsetHeight;
 
     delete_button.style.height = xHeight;
