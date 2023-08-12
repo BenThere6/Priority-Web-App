@@ -226,6 +226,8 @@ function list_sorter() {
 
 function showEnterItemsScreen() {
     hideAllScreens();
+    const welcome_page = document.getElementById('welcome-page');
+    welcome_page.style.display = 'none';
     ETScreen.style.display = 'block';
     entered_item.focus();
 }
@@ -344,9 +346,17 @@ function adjustPadding() {
 function adjustX() {
     const list_title = document.querySelector('.list_title');
     const delete_button = document.querySelector('.delete_button');
-    const xHeight = list_title.offsetHeight;
+    const welcome_page = document.getElementById('welcome-page');
+    try {
+        const xHeight = list_title.offsetHeight;
+        delete_button.style.height = xHeight;
+        welcome_page.style.display = 'none';
+    }
+    catch {
+        welcome_page.style.display = 'block';
+    }
 
-    delete_button.style.height = xHeight;
+    
 }
 
 document.addEventListener('DOMContentLoaded', () => {

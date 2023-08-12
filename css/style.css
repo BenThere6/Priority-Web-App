@@ -46,6 +46,22 @@ h1 {
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
+#welcome-page {
+    margin-top: 20vh;
+}
+
+#welcome_header {
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+}
+
+#welcome_text {
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
+}
+
 .buttons {
     background-color: var(--stark-white);
     color: black;
