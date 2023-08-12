@@ -81,7 +81,6 @@ doneBtn.addEventListener('click', function() {
         compare();
         showUserChoiceScreen();
     }
-    
 });
 
 item_one.addEventListener('click', function() {
@@ -128,8 +127,6 @@ save_form.addEventListener('submit', function(e) {
         list_nameEL.value = '';
         save_form.style.display = 'none';
     }
-
-    
 });
 
 function randomizeComparisons() {
@@ -216,11 +213,6 @@ function list_sorter() {
     showViewListScreen();
 }
 
-// function showMainScreen() {
-//     hideAllScreens();
-//     mainScreen.style.display = 'block';
-// }
-
 function showEnterItemsScreen() {
     hideAllScreens();
     ETScreen.style.display = 'block';
@@ -268,7 +260,7 @@ function createFinalElements() {
             div.appendChild(deleteButton);
 
             var listNameEl = document.createElement('h3');
-            listNameEl.classList.add('scroll');
+            listNameEl.classList.add('list_title');
             var listElement = createListElement(list);
 
             listNameEl.textContent = listName;
@@ -284,7 +276,7 @@ function createFinalElements() {
 
 function createDeleteButton(listName) {
     var deleteButton = document.createElement('button');
-    deleteButton.textContent = 'X';
+    deleteButton.textContent = '𝗫';
     deleteButton.classList.add('delete_button');
 
     deleteButton.addEventListener('click', function() {
@@ -301,7 +293,6 @@ function createDeleteButton(listName) {
 function createListElement(list) {
     var listElement = document.createElement('ol');
     listElement.classList.add('lists');
-    listElement.classList.add('scroll');
 
     for (var i = 0; i < list.length; i++) {
         var listItem = document.createElement('li');
@@ -337,6 +328,14 @@ function adjustPadding() {
 
     // Add header height to content padding-top
     content.style.paddingTop = headerHeight + 'px';
+}
+
+function adjustX() {
+    const list_title = document.querySelector('list-title');
+    const delete_button = document.querySelector('delete_button');
+    const xHeight = list_title.offsetHeight;
+
+    delete_button.style.height = xHeight;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
