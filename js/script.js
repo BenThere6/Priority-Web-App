@@ -32,15 +32,18 @@ item_form.addEventListener('submit', function(e) {
     e.preventDefault();
     var user_input = entered_item.value.trim();
     if (unorganized_list.includes(user_input)) {
+        errorMessage1.style.display = 'block';
         errorMessage1.textContent = 'Item is already in the list.';
         entered_item.value='';
     }
     else if (user_input === '') {
+        errorMessage1.style.display = 'block';
         errorMessage1.textContent = 'Please enter an item.';
         entered_item.value='';
     }
     else {
-        errorMessage1.textContent = '';
+        // errorMessage1.textContent = '';
+        errorMessage1.style.display = 'none';
         unorganized_list.push(user_input);
         $('#unsorted_list').prepend('<li>' + user_input + '</li>');
         entered_item.value='';
@@ -49,8 +52,10 @@ item_form.addEventListener('submit', function(e) {
 });
 
 sort_newBtn.addEventListener('click', function() {
-    errorMessage1.textContent = '';
-    errorMessage2.textContent = '';
+    // errorMessage1.textContent = '';
+    // errorMessage2.textContent = '';
+    errorMessage1.style.display = 'none';
+    errorMessage2.style.display = 'none';
     unorganized_list = [];
     sorted_list = [];
     comparisons = [];
@@ -64,17 +69,21 @@ sort_newBtn.addEventListener('click', function() {
 });
 
 view_sortedBtn.addEventListener('click', function() {
-    errorMessage1.textContent = '';
-    errorMessage2.textContent = '';
+    // errorMessage1.textContent = '';
+    // errorMessage2.textContent = '';
+    errorMessage1.style.display = 'none';
+    errorMessage2.style.display = 'none';
     createFinalElements();
     showPreviousListsScreen();
 });
 
 doneBtn.addEventListener('click', function() {
     if (unorganized_list.length === 0 || unorganized_list.length === 1){
+        errorMessage1.style.display = 'block';
         errorMessage1.textContent = 'List needs at least two items'
     } else if (unorganized_list.length > 1){
-        errorMessage1.textContent = '';
+        // errorMessage1.textContent = '';
+        errorMessage1.style.display = 'none';
         randomizeComparisons()
         y = 0;
         pointsInit();
@@ -118,10 +127,12 @@ save_form.addEventListener('submit', function(e) {
     var existingData = JSON.parse(localStorage.getItem('prioritized_lists')) || {};
 
     if (existingData.hasOwnProperty(list_name)) {
+        errorMessage2.style.display = 'block';
         errorMessage2.textContent = 'List name already exists in local storage.';
         list_nameEL.value = '';
     } else {
-        errorMessage2.textContent = '';
+        errorMessage2.style.display = 'none';
+        // errorMessage2.textContent = '';
         save_confirm.style.display = 'block';
         saveList();
         list_nameEL.value = '';
