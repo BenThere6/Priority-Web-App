@@ -91,6 +91,10 @@ h1 {
     border-radius: 20px;
 }
 
+.list_title {
+    height: 20px;
+}
+
 h3 {
     background-color: var(--dark-stark);
     padding:3px 10px 3px 10px;

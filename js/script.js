@@ -247,6 +247,8 @@ function showViewListScreen() {
 
 function showPreviousListsScreen() {
     hideAllScreens();
+    document.addEventListener('DOMContentLoaded',adjustX)
+    // adjustX();
     PLScreen.style.display = 'block';
 }
 
@@ -289,7 +291,7 @@ function createFinalElements() {
 
 function createDeleteButton(listName) {
     var deleteButton = document.createElement('button');
-    deleteButton.textContent = '𝗫';
+    deleteButton.textContent = 'x';
     deleteButton.classList.add('delete_button');
 
     deleteButton.addEventListener('click', function() {
@@ -348,20 +350,17 @@ function adjustX() {
     const delete_button = document.querySelector('.delete_button');
     const welcome_page = document.getElementById('welcome-page');
     try {
-        const xHeight = list_title.offsetHeight;
-        delete_button.style.height = xHeight;
+        delete_button.style.height = list_title.clientHeight + 'px';
         welcome_page.style.display = 'none';
     }
     catch {
         welcome_page.style.display = 'block';
     }
-
-    
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     adjustPadding();
-    adjustX();
+    // adjustX();
     window.addEventListener('resize', adjustPadding);
 });
 
