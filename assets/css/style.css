@@ -23,7 +23,14 @@ html, h1, h2, h3, body, label {
 }
 
 body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
     background-color: var(--link-water);
+}
+
+/* For Firefox, you can customize the scrollbar color as well */
+body::-webkit-scrollbar {
+    display: none; /* Hide in WebKit-based browsers */
 }
 
 header {
