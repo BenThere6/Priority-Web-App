@@ -10,7 +10,7 @@
 * Click 'New List' to sort a new list
 * Enter each item you want to sort
 * Follow the prompts, selecting which of the two items are a higher priority to you
-* When completed, enter a name for your list, and save it to local storage
+* When completed, enter a name for your list and save it to local storage
 * Click 'View Saved Lists' to view all previously sorted lists
 
 ## Credit
