@@ -9,9 +9,17 @@
 
 * Click 'New List' to sort a new list
 * Enter each item you want to sort
-* Follow the prompts, selecting which of the two items are a higher priority to you
+* Follow the prompts, selecting which of the two items is a higher priority to you
+
+![Making comparison screenshot](./assets/images/choice_screenshot.png)
+
 * When completed, enter a name for your list and save it to local storage
+
+![Save list screenshot](./assets/images/name_list_screenshot.png)
+
 * Click 'View Saved Lists' to view all previously sorted lists
+
+![View previous lists screenshot](./assets/images/saved_lists_screenshot.png)
 
 ## Credit
 
