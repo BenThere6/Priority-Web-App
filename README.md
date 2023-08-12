@@ -3,5 +3,16 @@
 ## Description
 
 * Use this app to prioritize any list by comparing each item one by one. 
-* View saved lists stored in local storage.
-* When you're having a hard time making a decision, this app helps you see clearly what is the most important to you.
+* When you're having a hard time making a decision, this app helps you see clearly what is most important to you.
+
+## Usage
+
+* Click 'New List' to sort a new list
+* Enter each item you want to sort
+* Follow the prompts, selecting which of the two items are a higher priority to you
+* When completed, enter a name for your list, and save it to local storage
+* Click 'View Saved Lists' to view all previously sorted lists
+
+## Credit
+
+All of the code is original.
