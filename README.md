@@ -40,4 +40,4 @@ The Priority App has been diligently developed with originality and care by BenT
 
 [MIT License](https://opensource.org/licenses/MIT)
 
-The MIT License is a permissive open-source license that allows others to use, modify, and distribute your code for both commercial and non-commercial purposes. It requires that the original license notice and copyright notice are included in any redistributions.
+This code's MIT License allows you to freely use, modify, and share it for any purpose. Please include the original license and copyright notices when sharing.
