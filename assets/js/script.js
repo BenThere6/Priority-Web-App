@@ -285,7 +285,7 @@ function createFinalElements() {
             var listNameEl = document.createElement('h3');
             listNameEl.classList.add('list_title');
             listNameEl.classList.add('scroll');
-            var listElement = createListElement(list);
+            var listElement = createListElement(list, listName);
 
             listNameEl.textContent = listName;
             listNameEl.style.textAlign = 'center';
@@ -314,19 +314,52 @@ function createDeleteButton(listName) {
     return deleteButton;
 }
 
-function createListElement(list) {
+function createListElement(list, listName) {
     var listElement = document.createElement('ol');
     listElement.classList.add('lists');
     listElement.classList.add('scroll');
 
-    for (var i = 0; i < list.length; i++) {
+    list.forEach(item => {
         var listItem = document.createElement('li');
         listItem.classList.add('list_items');
-        // listItem.classList.add('scroll');
-        listItem.textContent = list[i];
+
+        // Check if item is an object (new format) or just a string (old format)
+        var itemName = typeof item === 'object' ? item.name : item;
+        var isChecked = typeof item === 'object' ? item.checked : false;
+
+        listItem.textContent = itemName;
+
+        // Add a checkbox to each list item
+        var checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `item-${itemName}`;
+        checkbox.checked = isChecked;
+        listItem.insertBefore(checkbox, listItem.firstChild);
+
+        checkbox.addEventListener('change', () => {
+            updateListInLocalStorage(listName, itemName, checkbox.checked);
+        });
+
         listElement.appendChild(listItem);
-    }
+    });
     return listElement;
+}
+
+function updateListInLocalStorage(listName, itemName, isChecked) {
+    var prioritized_lists = JSON.parse(localStorage.getItem('prioritized_lists')) || {};
+    var list = prioritized_lists[listName];
+
+    if (list) {
+        var itemIndex = list.findIndex(item => typeof item === 'object' ? item.name === itemName : item === itemName);
+        if (itemIndex > -1) {
+            if (typeof list[itemIndex] === 'string') {
+                list[itemIndex] = { name: itemName, checked: isChecked };
+            } else {
+                list[itemIndex].checked = isChecked;
+            }
+            localStorage.setItem('prioritized_lists', JSON.stringify(prioritized_lists));
+        }
+    }
 }
 
 function deleteList(listName) {
@@ -337,12 +370,14 @@ function deleteList(listName) {
 
 
 function saveList() {
-    var prioritized_lists = {};
-    const objectExists = (localStorage.getItem('prioritized_lists') !== null);
-    if (objectExists) {
-        prioritized_lists = JSON.parse(localStorage.getItem('prioritized_lists'));
-    } 
-    prioritized_lists[list_name] = sorted_list;
+    var prioritized_lists = JSON.parse(localStorage.getItem('prioritized_lists')) || {};
+
+    // Save the current state of sorted_list with checkbox states
+    prioritized_lists[list_name] = sorted_list.map(itemName => {
+        const listItem = document.getElementById(`item-${itemName}`);
+        return { name: itemName, checked: listItem ? listItem.checked : false };
+    });
+
     localStorage.setItem('prioritized_lists', JSON.stringify(prioritized_lists));
 }
 
