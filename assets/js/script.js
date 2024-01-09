@@ -90,6 +90,10 @@ doneBtn.addEventListener('click', function() {
         errorMessage1.style.display = 'block';
         errorMessage1.textContent = 'List needs at least two items'
     } else if (unorganized_list.length > 1){
+        const doneConfirm = confirm("Are you finished entering your items?")
+        if (!doneConfirm) {
+            return;
+        }
         // errorMessage1.textContent = '';
         errorMessage1.style.display = 'none';
         randomizeComparisons()
